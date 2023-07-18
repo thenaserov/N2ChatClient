@@ -11,14 +11,16 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core LinguistTools REQUIRED)
+find_package(Qt5 COMPONENTS Core LinguistTools Network REQUIRED)
 
 set(TS_FILES N2ChatClient_en_US.ts)
 
 add_executable(N2ChatClient
   main.cpp
+  n2client.cpp
+  n2client.h
   ${TS_FILES}
 )
-target_link_libraries(N2ChatClient Qt5::Core)
+target_link_libraries(N2ChatClient Qt5::Core Qt5::Network)
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
